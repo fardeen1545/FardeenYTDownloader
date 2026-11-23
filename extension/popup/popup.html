@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fardeen YT Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img src="../icons/icon32.png" alt="" width="24" height="24">
+    <h1>Fardeen YT Downloader</h1>
+  </header>
+
+  <main>
+    <section id="checking" class="center">
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="muted">Connecting to the helper app…</p>
+    </section>
+
+    <section id="setup" hidden>
+      <h2>Setup required</h2>
+      <p>Downloads are done by a small helper app on your computer that runs <b>yt-dlp</b> and <b>ffmpeg</b>.
+        It isn't installed yet, or the browser can't reach it.</p>
+      <p id="setup-reason" class="error"></p>
+      <ol class="steps">
+        <li>Install <b>Python 3</b> (python.org), then run <code>pip install -U yt-dlp</code>.</li>
+        <li>Install <b>ffmpeg</b> (Windows: <code>winget install Gyan.FFmpeg</code>, macOS: <code>brew install ffmpeg</code>).</li>
+        <li>Copy this extension's ID:
+          <span class="idbox"><code id="ext-id"></code><button id="copy-id" class="btn small" type="button">Copy</button></span>
+        </li>
+        <li>In the project's <code>host</code> folder run <b>install.bat</b> (Windows) or <b>install.sh</b> (macOS / Linux)
+          and paste the ID when asked.</li>
+        <li>Restart the browser completely, then press <b>Check again</b>.</li>
+      </ol>
+      <button id="recheck" class="btn primary" type="button">Check again</button>
+    </section>
+
+    <section id="app" hidden>
+      <p id="warning" class="warning" role="status" hidden></p>
+
+      <form id="fetch-form" novalidate>
+        <label for="url" class="sr-only">YouTube link</label>
+        <div class="input-row">
+          <input id="url" type="text" inputmode="url" placeholder="Paste a YouTube link…" autocomplete="off" spellcheck="false">
+          <button id="fetch-btn" class="btn primary" type="submit">Fetch</button>
+        </div>
+        <p id="url-error" class="error" role="alert" hidden></p>
+      </form>
+
+      <div id="result" aria-live="polite"></div>
+
+      <section class="block" aria-labelledby="downloads-title">
+        <div class="block-head">
+          <h2 id="downloads-title">Downloads</h2>
+          <button id="clear" class="link" type="button" hidden>Clear finished</button>
+        </div>
+        <ul id="jobs" class="jobs"></ul>
+        <p id="no-jobs" class="muted">No downloads yet.</p>
+      </section>
+
+      <details id="settings" class="block">
+        <summary>Settings</summary>
+        <form id="settings-form" novalidate>
+          <label for="s-folder">Download folder</label>
+          <input id="s-folder" type="text" spellcheck="false">
+          <p class="hint">Leave empty to use your Downloads folder.</p>
+
+          <label for="s-quality">Default quality</label>
+          <select id="s-quality"></select>
+
+          <label for="s-template">Filename template</label>
+          <input id="s-template" type="text" spellcheck="false">
+          <p class="hint">Fields: {title} {id} {channel} {date} {quality}</p>
+
+          <label class="toggle"><input id="s-thumbs" type="checkbox"> Show download buttons on thumbnails</label>
+
+          <p id="s-error" class="error" role="alert" hidden></p>
+          <div class="input-row">
+            <button class="btn primary" type="submit">Save settings</button>
+            <span id="s-saved" class="muted" role="status" hidden>Saved ✓</span>
+          </div>
+        </form>
+      </details>
+    </section>
+  </main>
+
+  <script src="../lib/common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

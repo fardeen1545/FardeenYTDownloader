@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Fardeen YT Downloader logo">
+  <!-- Same geometry as tools/make_icons.py (unit coordinates x 128). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF4E45"/>
+      <stop offset="1" stop-color="#D6120B"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3.2" stdDeviation="1.2" flood-color="#780000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect x="3.84" y="3.84" width="120.32" height="120.32" rx="29.44" fill="url(#bg)"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="14.08" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)">
+    <path d="M64 28.16V74.24"/>
+    <path d="M42.24 55.04L64 76.8L85.76 55.04"/>
+    <path d="M32 81.92V99.84H96V81.92"/>
+  </g>
+</svg>

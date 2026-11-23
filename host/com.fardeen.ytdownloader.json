@@ -1,0 +1,9 @@
+{
+  "name": "com.fardeen.ytdownloader",
+  "description": "Fardeen YT Downloader native host",
+  "path": "D:\\zTest\\YT Downloader extension\\host\\fardeen_host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://opoolodmbobmccojjpjnkcdgkmlekdem/"
+  ]
+}
